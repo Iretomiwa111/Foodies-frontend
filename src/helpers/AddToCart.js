@@ -1,14 +1,14 @@
-import axios from "axios";
 import { toast } from "sonner";
+import { privateApiClient } from "@/lib/client";
 
 export const handleAddToCart = async (menuItemId, quantity = 1) => {
   try {
     console.log("Adding to cart with ID:", menuItemId);
-    const res = await axios.post(
-      "http://localhost:5000/api/v1/cart",
-      {  menuItemId: menuItemId, quantity },
-      { withCredentials: true }
-    );
+    const res = await privateApiClient.post("/api/v1/cart", {
+      menuItemId,
+      quantity,
+    });
+
     toast.success("Added to cart!");
     return res.data;
   } catch (err) {

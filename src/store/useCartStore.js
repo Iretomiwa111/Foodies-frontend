@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import axios from "axios";
 import { toast } from "sonner";
+import { privateApiClient } from "@/lib/client";
 
 export const useCartStore = create((set, get) => ({
   cart: [],
@@ -9,9 +9,7 @@ export const useCartStore = create((set, get) => ({
   fetchCart: async () => {
     set({ loading: true });
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/cart", {
-        withCredentials: true,
-      });
+      const res = await privateApiClient.get("/cart");
       set({ cart: res.data });
     } catch {
       toast.error("Failed to fetch cart");
@@ -27,11 +25,10 @@ export const useCartStore = create((set, get) => ({
         quantity: 1,
       });
 
-      await axios.post(
-      "http://localhost:5000/api/v1/cart",
-      { menuItemId: menuItem._id, quantity: 1 }, // ✅ send menuItemId instead of menuItem
-      { withCredentials: true }
-    );
+      await privateApiClient.post("/cart", {
+        menuItemId: menuItem._id,
+        quantity: 1,
+      });
 
       toast.success("Added to cart!");
       await get().fetchCart();
@@ -42,9 +39,7 @@ export const useCartStore = create((set, get) => ({
 
   removeCartItem: async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/v1/cart/${id}`, {
-        withCredentials: true,
-      });
+      await privateApiClient.delete(`/cart/${id}`);
       toast.success("Item removed");
       await get().fetchCart();
     } catch {
@@ -54,11 +49,7 @@ export const useCartStore = create((set, get) => ({
 
   updateCartItemQuantity: async (id, quantity) => {
     try {
-      await axios.patch(
-        `http://localhost:5000/api/v1/cart/${id}`,
-        { quantity },
-        { withCredentials: true }
-      );
+      await privateApiClient.patch(`/cart/${id}`, { quantity });
       toast.success("Quantity updated!");
       await get().fetchCart();
     } catch {

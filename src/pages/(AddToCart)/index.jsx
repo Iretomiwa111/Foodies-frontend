@@ -59,7 +59,7 @@ const CartPage = () => {
                 >
                   <div className="flex items-center gap-3">
                     <img
-                      src={`http://localhost:5000/${item.menuItem.image}`}
+                      src={`${import.meta.env.VITE_IMAGE_BASE_URL}/${item.menuItem.image}`}
                       alt={item.menuItem.name}
                       className="w-16 h-16 object-cover rounded-md"
                     />

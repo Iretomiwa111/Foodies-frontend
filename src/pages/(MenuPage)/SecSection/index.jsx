@@ -1,8 +1,8 @@
 "use client";
 import { motion as Motion, AnimatePresence } from "framer-motion";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useCartStore } from "@/store/useCartStore";
+import { privateApiClient } from "@/lib/client";
 
 const MenuGrid = ({ dishes, user, onMenuUpdate, onEdit }) => {
   console.log("Dishes received:", dishes);
@@ -18,18 +18,14 @@ const MenuGrid = ({ dishes, user, onMenuUpdate, onEdit }) => {
     setPendingDeleteId(id);
     setShowConfirm(true);
   };
+
   const handleAddToCart = (dish) => {
     addToCart(dish);
   };
 
   const handleDelete = async () => {
     try {
-      await axios.delete(
-        `http://localhost:5000/api/v1/menu/${pendingDeleteId}`,
-        {
-          withCredentials: true,
-        }
-      );
+      await privateApiClient.delete(`/menu/${pendingDeleteId}`);
       onMenuUpdate();
     } catch (err) {
       console.error("Delete failed:", err);
@@ -38,7 +34,6 @@ const MenuGrid = ({ dishes, user, onMenuUpdate, onEdit }) => {
       setPendingDeleteId(null);
     }
   };
-
   if (!Array.isArray(dishes))
     return <div className="text-center py-10">Loading menu...</div>;
   if (dishes.length === 0)
@@ -66,13 +61,14 @@ const MenuGrid = ({ dishes, user, onMenuUpdate, onEdit }) => {
             {/* Bigger image section */}
             <div className="h-72 w-full p-2 flex items-center justify-center">
               <img
-                src={`http://localhost:5000/${dish.image}`}
+                src={`${import.meta.env.VITE_IMAGE_BASE_URL}/${dish.image}`}
                 alt={dish.name}
                 className="w-full h-full object-contain rounded-full transition-transform duration-300 hover:scale-105"
                 onError={(e) => {
                   e.target.src = "https://via.placeholder.com/400x300";
                 }}
               />
+
             </div>
 
             {/* Content */}
@@ -100,11 +96,10 @@ const MenuGrid = ({ dishes, user, onMenuUpdate, onEdit }) => {
                     console.log("Adding to cart with ID:", dish._id);
                     handleAddToCart(dish);
                   }}
-                  className={`px-4 py-2 font-lobster rounded-md text-sm transition ${
-                    dish.available
+                  className={`px-4 py-2 font-lobster rounded-md text-sm transition ${dish.available
                       ? "bg-[#34a85a] hover:bg-[#4CAF50] text-[#333]"
                       : "bg-gray-400 text-gray-700 cursor-not-allowed"
-                  }`}
+                    }`}
                 >
                   {dish.available ? "Add to Cart" : "Unavailable"}
                 </button>

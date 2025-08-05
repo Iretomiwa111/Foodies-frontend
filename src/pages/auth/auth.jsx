@@ -85,14 +85,6 @@ const Auth = () => {
       toast.error(err.response?.data?.message || "Signup failed");
     }
   };
-  //     toast.success("Signup successful! Please login.");
-  //     resetSignupForm();
-  //     document.querySelector(".container")?.classList.remove("sign-up-mode");
-  //   } catch (err) {
-  //     toast.error(err.response?.data?.message || "Signup failed");
-  //   }
-  // };
-
 
   return (
     <div className="dark">

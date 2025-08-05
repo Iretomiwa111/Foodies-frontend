@@ -1,0 +1,58 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-form {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* ...existing code... */
+
+.input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 500px;
+  width: 100%;
+  min-width: 250px; /* Prevents excessive shrinking */
+  gap: 0.5rem;
+}
+
+.input-wrapper input,
+.input-wrapper button {
+  width: 100%;
+  min-width: 0; /* Allows flex to control width */
+  font-size: 1rem;
+}
+
+/* ...existing code... */
+
+.input-wrapper button:hover {
+  background-color: #e5673c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .custom-form {
+    padding: 0.5rem;
+  }
+  .input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 100%;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .input-wrapper input,
+  .input-wrapper button {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+

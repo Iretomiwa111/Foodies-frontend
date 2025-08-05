@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { toast } from "sonner";
 import { motion as Motion } from "framer-motion";
+import { privateApiClient } from "@/lib/client";
 
 const AdminOrderPage = () => {
   const [orders, setOrders] = useState([]);
@@ -11,16 +11,8 @@ const AdminOrderPage = () => {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(
-        `http://localhost:5000/api/v1/orders${
-          statusFilter ? `?status=${statusFilter}` : ""
-        }`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          withCredentials: true,
-        }
+      const res = await privateApiClient.get(
+        `/orders${statusFilter ? `?status=${statusFilter}` : ""}`
       );
       setOrders(res.data.orders || []);
     } catch (err) {
@@ -39,11 +31,9 @@ const AdminOrderPage = () => {
 
   const updateStatus = async (orderId, newStatus) => {
     try {
-      await axios.patch(
-        `http://localhost:5000/api/v1/orders/${orderId}/status`,
-        { status: newStatus },
-        { withCredentials: true }
-      );
+      await privateApiClient.patch(`/orders/${orderId}/status`, {
+        status: newStatus,
+      });
       toast.success(`Order marked as ${newStatus}`);
       fetchOrders();
     } catch (err) {
@@ -54,10 +44,7 @@ const AdminOrderPage = () => {
 
   const deleteOrder = async (orderId) => {
     try {
-      await axios.delete(
-        `http://localhost:5000/api/v1/orders/${orderId}/admin`,
-        { withCredentials: true }
-      );
+      await privateApiClient.delete(`/orders/${orderId}/admin`);
       toast.success("Order deleted");
       fetchOrders();
     } catch (err) {
@@ -65,7 +52,6 @@ const AdminOrderPage = () => {
       toast.error("Failed to delete order");
     }
   };
-
   const statusBadge = (status) => {
     const base = "px-2 py-1 rounded-full text-xs font-semibold";
     switch (status) {

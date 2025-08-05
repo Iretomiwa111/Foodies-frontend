@@ -66,7 +66,7 @@ const OrderConfirmation = () => {
               className="flex items-center justify-between gap-4 border-b border-gray-700 pb-4"
             >
               <img
-                src={`http://localhost:5000/${item.menuItem.image}`}
+               src={`${import.meta.env.VITE_IMAGE_BASE_URL}/${item.menuItem.image}`}
                 alt={item.menuItem.name}
                 className="w-20 h-20 rounded-lg object-cover"
               />

@@ -2,7 +2,7 @@ import { useState } from "react";
 import PasswordVerifyModal from "@/components/VerifyPassword/VerifyPassword";
 import { useAuth } from "@/pages/context/AuthContext";
 import { toast } from "sonner";
-import axios from "axios";
+import { apiClient } from "@/lib/client";
 
 const SettingsTab = () => {
   const { user } = useAuth();
@@ -11,15 +11,12 @@ const SettingsTab = () => {
   const [newPassword, setNewPassword] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
 
-  // This gets triggered AFTER password is verified
   const handlePasswordUpdate = async () => {
     try {
-      await axios.put("http://localhost:5000/api/v1/user/change-password", {
+      await apiClient.put("/user/change-password", {
         currentPassword,
         newPassword,
-      }, { withCredentials: true });
-
-
+      });
 
       toast.success("Password updated successfully");
       setNewPassword("");

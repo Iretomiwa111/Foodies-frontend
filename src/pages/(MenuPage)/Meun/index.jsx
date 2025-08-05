@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import axios from "axios";
 
 import NavBar from "../../components/layout/NavBar";
 import AceternitySlider from "../FirstSection";
@@ -10,6 +9,8 @@ import MenuGrid from "../SecSection";
 import AdminMenu from "@/pages/(Admin)";
 import Footer from "@/pages/components/layout/Footer";
 import FocusCardsDemo from "@/components/focus-cards-demo";
+
+import { privateApiClient } from "@/lib/client";
 
 const MenuPage = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -54,18 +55,17 @@ const MenuPage = () => {
     "Others",
   ];
 
+
   const fetchMenuAgain = () => {
-    axios
-      .get("http://localhost:5000/api/v1/menu", {
-        withCredentials: true,
-      })
+    privateApiClient
+      .get("/menu")
       .then((res) => setMenuItems(res.data.menu || []))
       .catch((err) => console.error("Menu refresh failed:", err));
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/v1/user/me", { withCredentials: true })
+    privateApiClient
+      .get("/user/me")
       .then((res) => setUser(res.data.user))
       .catch(() => {
         console.log("User not authenticated, redirecting...");
@@ -76,8 +76,8 @@ const MenuPage = () => {
   useEffect(() => {
     if (!user) return;
 
-    axios
-      .get("http://localhost:5000/api/v1/menu", { withCredentials: true })
+    privateApiClient
+      .get("/menu")
       .then((res) => {
         setMenuItems(res.data.menu || []);
       })

@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { motion as Motion } from "framer-motion";
 import { toast } from "sonner";
+import { privateApiClient } from "@/lib/client";
 
 const AdminReservationPage = () => {
-
-    const [reservations, setReservations] = useState([]);
+  const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchReservations = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/reservations", {
-        withCredentials: true,
-      });
+      const res = await privateApiClient.get("/reservations");
       setReservations(res.data);
     } catch {
       toast.error("Failed to fetch reservations");

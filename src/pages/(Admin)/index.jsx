@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { toast } from "sonner";
-import axios from "axios";
+import { privateApiClient } from "@/lib/client";
 
 const AdminMenu = ({ isOpen, onClose, mode, initialData, onSuccess }) => {
   const [formData, setFormData] = useState({
@@ -49,7 +49,7 @@ const AdminMenu = ({ isOpen, onClose, mode, initialData, onSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(" Submitting menu form:", formData);
+    console.log("Submitting menu form:", formData);
 
     const data = new FormData();
     data.append("name", formData.name);
@@ -61,20 +61,16 @@ const AdminMenu = ({ isOpen, onClose, mode, initialData, onSuccess }) => {
 
     try {
       if (mode === "edit") {
-        await axios.put(`http://localhost:5000/api/v1/menu/${initialData._id}`, data, {
-          withCredentials: true,
-        });
+        await privateApiClient.put(`/menu/${initialData._id}`, data);
         toast.success("Menu item updated!");
       } else {
-        await axios.post("http://localhost:5000/api/v1/menu", data, {
-          withCredentials: true,
-        });
+        await privateApiClient.post("/menu", data);
         toast.success("Menu item created!");
       }
-      onSuccess(); 
-      onClose();   
+      onSuccess();
+      onClose();
     } catch (err) {
-       toast.error("Something went wrong.");
+      toast.error("Something went wrong.");
       console.error("Modal submit error:", err);
     }
   };
