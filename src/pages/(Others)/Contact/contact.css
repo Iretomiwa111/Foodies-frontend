@@ -1,0 +1,333 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.contact-page {
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  background-color: #111;
+}
+
+.contact-hero {
+  background: url('https://images.unsplash.com/photo-1676716260600-217008b2e00a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+  height: 60vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-hero .overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.contact-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-hero p {
+  font-size: 1.2rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background: #1a1a1a;
+  padding: 3rem 1rem;
+}
+
+.contact-box {
+  flex: 1 1 250px;
+  max-width: 300px;
+  margin: 1rem;
+  background: #222;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000;
+}
+
+.contact-box h2 {
+  margin-bottom: 1rem;
+  color: #ffcc00;
+}
+
+.extras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 3rem 1rem;
+  background: #181818;
+}
+
+.extra-box {
+  background: #222;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000;
+}
+
+.extra-box h3 {
+  margin-bottom: 0.5rem;
+  color: #ff6600;
+}
+
+.map-container {
+  padding: 0 2rem 3rem;
+}
+
+
+.socials {
+  background: #111;
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  gap: 1.5rem;
+}
+
+.socials h2 {
+  color: #ffcc00;
+  font-size: 4rem;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem; 
+}
+
+.social-icons a {
+  font-size: 2rem;
+  color: #fff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+  color: #ff6600;
+}
+.contact-touch-section {
+  background: #0d0d0d;
+  color: #fff;
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container {
+  max-width: 700px;
+  width: 100%;
+  background: #1a1a1a;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.contact-container h2 {
+  font-size: 2.5rem;
+  color: #ffcc00;
+  margin-bottom: 1rem;
+}
+
+.contact-container p {
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.contact-touch-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.form-group input {
+  flex: 1;
+}
+
+@media (min-width: 640px) {
+  .form-group {
+    flex-direction: row;
+  }
+}
+
+.contact-touch-form input,
+.contact-touch-form textarea {
+  width: 100%;
+  padding: 1rem;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.contact-touch-form input::placeholder,
+.contact-touch-form textarea::placeholder {
+  color: #888;
+}
+
+.contact-touch-form button {
+  background: #ffcc00;
+  color: #111;
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-touch-form button:hover {
+  background: #e6b800;
+}
+.footer{
+  background: #111;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply Animations to Elements */
+
+.contact-hero .overlay {
+  animation: zoomIn 1.2s ease forwards;
+}
+
+.contact-details,
+.extras,
+.socials,
+.map-container,
+.contact-touch-section {
+  animation: fadeUp 1.2s ease both;
+}
+
+.contact-box,
+.extra-box,
+.social-icons a,
+.contact-touch-form {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-box:hover,
+.extra-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.2);
+}
+
+.social-icons a:hover {
+  transform: scale(1.2) rotate(-2deg);
+}
+
+.contact-touch-form {
+  animation: slideInLeft 1s ease both;
+}
+
+.contact-touch-form button:hover {
+  transform: scale(1.03);
+  background: #f1c40f;
+}
+
+/* Add animation delays for staggered effect */
+.contact-box:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.contact-box:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.contact-box:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.extra-box:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.extra-box:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.extra-box:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.extra-box:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.extra-box:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.socials {
+  animation-delay: 0.4s;
+}
+
+.contact-touch-section {
+  animation-delay: 0.6s;
+}
+
+/* Add a fade-in for footer */
+.footer {
+  animation: fadeUp 1s ease;
+  animation-delay: 1s;
+}

@@ -1,0 +1,333 @@
+ /* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.services-page {
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  background: url('https://images.unsplash.com/photo-1747535797922-0e36c1b4e795?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat fixed;
+  padding-top: 80px;
+}
+
+.services-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.services-hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  animation: fadeInDown 1s ease forwards;
+}
+
+.services-hero p {
+  font-size: 1.2rem;
+  color: #ccc;
+  animation: fadeIn 2s ease forwards;
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2rem;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.card .icon {
+  font-size: 2.5rem;
+  color: #ffba08;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+.why-choose {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.why-choose h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.highlight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #222;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.how-it-works {
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.how-it-works h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.step {
+  background: #111;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.step h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #ffba08;
+}
+
+.testimonials {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.testimonial-box {
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  font-style: italic;
+  border-left: 4px solid #ffba08;
+}
+.cta {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: linear-gradient(to right, #111, #222);
+}
+
+.cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.reserve-btn,
+.join-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: #ffba08;
+  color: #000;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.reserve-btn:hover,
+.join-btn:hover {
+  background-color: #ffc107;
+}
+
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .card, .step, .highlight {
+    text-align: left;
+  }
+}
+
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.services-hero {
+  animation: fadeUp 1s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+.service-cards .card {
+  animation: zoomIn 0.8s ease forwards;
+  opacity: 0;
+}
+.service-cards .card:nth-child(1) { animation-delay: 0.2s; }
+.service-cards .card:nth-child(2) { animation-delay: 0.4s; }
+.service-cards .card:nth-child(3) { animation-delay: 0.6s; }
+.service-cards .card:nth-child(4) { animation-delay: 0.8s; }
+.service-cards .card:nth-child(5) { animation-delay: 1s; }
+
+.why-choose {
+  animation: slideInLeft 1s ease forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+
+.how-it-works {
+  animation: slideInRight 1s ease forwards;
+  opacity: 0;
+  animation-delay: 0.4s;
+}
+
+.testimonials .testimonial-box {
+  animation: fadeInScale 1s ease forwards;
+  opacity: 0;
+}
+.testimonials .testimonial-box:nth-child(1) { animation-delay: 0.3s; }
+.testimonials .testimonial-box:nth-child(2) { animation-delay: 0.6s; }
+
+.cta {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.cta.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.services-page section {
+  will-change: transform, opacity;
+}
+
+.cta-buttons button {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.cta-buttons button:hover {
+  transform: scale(1.05);
+  background-color: #111;
+  color: #fff;
+}
+.footer {
+  animation: fadeUp 1s ease;
+  animation-delay: 1s;
+  background: #111;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
