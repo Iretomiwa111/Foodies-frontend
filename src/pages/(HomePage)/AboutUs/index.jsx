@@ -26,7 +26,7 @@ const AboutUs = () => {
 
           <div className="border border-white/20 rounded-2xl overflow-hidden">
             <img
-              src="https://i.pinimg.com/1200x/81/b4/e3/81b4e392f820324a3beb59e2c9ee1795.jpg"
+              src="/abtus1.webp"
               alt="Our Kitchen"
               className="w-full h-full object-cover"
             />

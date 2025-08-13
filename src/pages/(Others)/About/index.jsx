@@ -72,36 +72,36 @@ const AboutPage = () => {
           </p>
           <div className="space-gallery">
             <img
-              src="https://i.pinimg.com/1200x/3a/e9/a9/3ae9a98ae285f1a697d3e426b8ceb586.jpg"
+              src="/interior1.webp"
               alt="Interior 1"
             />
             <img
-              src="https://i.pinimg.com/736x/70/60/0e/70600e0776c0db3a21c7485c9b75574b.jpg"
+              src="/interior2.webp"
               alt="Interior 2"
             />
             <img
-              src="https://i.pinimg.com/736x/3b/92/81/3b92818a0830b031436e04ac0eabf8f4.jpg"
+              src="/interior3.webp"
               alt="Interior 3"
             />
             <img
-              src="https://i.pinimg.com/736x/8c/c7/18/8cc718fdc522daf67157feee83e5da1e.jpg"
-              alt="Interior 1"
+              src="/interior4.webp"
+              alt="Interior 4"
             />
             <img
-              src="https://i.pinimg.com/1200x/73/f1/d3/73f1d37f94bbc54243f741ce28d7c3d2.jpg"
-              alt="Interior 2"
+              src="/interior5.webp"
+              alt="Interior 5"
             />
             <img
-              src="https://i.pinimg.com/736x/78/11/84/781184aee8ec00c4c2b7971936063a00.jpg"
-              alt="Interior 3"
+              src="/interior6.webp"
+              alt="Interior 6"
             />
             <img
-              src="https://i.pinimg.com/1200x/87/8e/2d/878e2d182770c30dc2c9d6a4e0d08b9f.jpg"
-              alt="Interior 2"
+              src="/interior7.webp"
+              alt="Interior 7"
             />
             <img
-              src="https://i.pinimg.com/736x/c1/63/9e/c1639e03132ad3d293906234179aa040.jpg"
-              alt="Interior 3"
+              src="/interior8.webp"
+              alt="Interior 8"
             />
           </div>
         </section>

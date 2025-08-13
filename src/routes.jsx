@@ -18,8 +18,8 @@ import ReservationConfirmation from "./pages/(Others)/Reservations/ReservationCo
 import Services from "./pages/(Others)/Services";
 import About from "./pages/(Others)/About";
 import Contact from "./pages/(Others)/Contact";
-// import ResetPassword from "./pages/(Others)/ResetPassword";
-// import ForgotPassword from "./pages/(Others)/ForgotPassword";
+import ForgotPassword from "./pages/(Others)/ForgotPassword";
+import ResetPassword from "./pages/(Others)/ResetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />, 
+        element: <HomePage />,
       },
       {
         path: "about-us",
@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "auth",
-        element: <Auth/>,
+        element: <Auth />,
       },
       {
         path: "login",
@@ -112,6 +112,14 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "forgot-password",
+        element: <ForgotPassword/>,
+      },
+      {
+        path: "reset-password/:token",
+        element: <ResetPassword />,
+      },
+      {
         path: "about",
         element: (
           <PrivateRoute>
@@ -149,16 +157,6 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-
-      // ✅ FUTURE ROUTES
-      // {
-      //   path: "reset-password/:token",
-      //   element: <ResetPassword />,
-      // },
-      // {
-      //   path: "forgot-password",
-      //   element: <ForgotPassword />,
-      // },
     ],
   },
 ]);

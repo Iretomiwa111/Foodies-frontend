@@ -188,6 +188,17 @@ ul {
   color: red;
 }
 
+.fade-out {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
 
 
 @media (max-width:880px) {

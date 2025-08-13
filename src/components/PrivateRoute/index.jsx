@@ -18,7 +18,10 @@ const PrivateRoute = ({ children }) => {
   }
 
   if (!user) {
-    return <Navigate to="/auth" replace state={{ from: location }} />;
+    return ( <Navigate
+        to={`/auth?next=${encodeURIComponent(location.pathname)}`}
+        replace
+      />);
   }
 
   

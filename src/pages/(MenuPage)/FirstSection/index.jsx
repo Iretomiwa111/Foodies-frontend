@@ -5,19 +5,19 @@ import { motion as Motion, AnimatePresence } from "framer-motion";
 
 const images = [
   {
-    url: "/splashfood2 (1).jpg",
+    url: "/splashfood2.webp",
     text: "Welcome to Foodies",
   },
   {
-    url: "/splashfood (1).jpg",
+    url: "/splashfood 1.webp",
     text: "Browse Menu Below",
   },
   {
-    url: "/unsplashfood (1).jpg",
+    url: "/unsplashfood1.webp",
     text: "Experience Culinary Excellence",
   },
   {
-    url: "/fod.jpg",
+    url: "/fod1.webp",
     text: "Fill Your Cart With Your Favorite",
   },
 ];

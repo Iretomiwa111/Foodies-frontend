@@ -1,10 +1,54 @@
-import React from "react";
-import { useState } from "react";
-import axios from "axios";
-import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
+// import { apiClient } from "@/lib/client";
+// import { toast } from "sonner";
 
-const ForgotPassword = () => {
+// export default function ForgotPassword() {
+//   const [email, setEmail] = useState("");
+//   const [loading, setLoading] = useState(false);
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!email) return toast.error("Please enter your email");
+
+//     setLoading(true);
+//     try {
+//       await apiClient.post("/auth/forgot-password", { email });
+//       toast.success("Password reset link sent! Check your email.");
+//       setEmail("");
+//     } catch (err) {
+//       toast.error(err.response?.data?.message || "Something went wrong");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="auth-page">
+//       <h2>Forgot Password</h2>
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           type="email"
+//           placeholder="Enter your email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//         />
+//         <button disabled={loading}>
+//           {loading ? "Sending..." : "Send Reset Link"}
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }
+
+
+import { useState } from "react";
+import { apiClient } from "@/lib/client";
+import { toast } from "sonner";
+import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import "./forgot.css";
+
+export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -13,11 +57,11 @@ const ForgotPassword = () => {
     e.preventDefault();
     if (!email) return toast.error("Please enter your email");
 
+    setLoading(true);
     try {
-      setLoading(true);
-      const res = await axios.post("http://localhost:5000/api/v1/user/forgot-password", { email });
-      toast.success(res.data.message || "Reset link sent!");
-      navigate("/login");
+      await apiClient.post("/auth/forgot-password", { email });
+      toast.success("Password reset link sent! Check your email.");
+      setEmail("");
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong");
     } finally {
@@ -26,32 +70,35 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-md max-w-md w-full space-y-4"
-      >
-        <h2 className="text-2xl font-bold text-center">Forgot Password</h2>
-
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className="w-full px-4 py-2 border rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
+    <div className="forgot-bg">
+      <div className="forgot-card">
         <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-black text-white py-2 rounded hover:opacity-90 transition"
+          className="back-arrow"
+          type="button"
+          onClick={() => navigate("/login")}
+          aria-label="Back to Login"
         >
-          {loading ? "Sending..." : "Send Reset Link"}
+          <FaArrowLeft size={22} />
         </button>
-      </form>
+        <h2 className="forgot-title">Forgot Password</h2>
+        <p className="forgot-desc">
+          Enter your email or phone number to reset your password quickly.
+        </p>
+        <form className="forgot-form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input
+              type="email"
+              placeholder="Email or phone number"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <button className="forgot-btn" disabled={loading}>
+            {loading ? "Sending..." : "Send"}
+          </button>
+        </form>
+      </div>
     </div>
   );
-};
-
-export default ForgotPassword;
+}

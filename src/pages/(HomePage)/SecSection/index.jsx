@@ -9,11 +9,11 @@ import "slick-carousel/slick/slick-theme.css";
 import "./sec.css";
 
 const images = [
-  "/burger.avif",
-  "/milkshake.jpg",
-  "/pancake.jpg",
-  "/rice.jpg",
-  "./steaak.jpg",
+  "/burger1.webp",
+  "/milkshake1.webp",
+  "/pancake1.webp",
+  "/rice1.webp",
+  "/steak.webp",
 ];
 
 const NextArrow = ({ className, onClick }) => (

@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const ProfileTab = () => {
-  const { user, setUser, logout } = useAuth();
+  const { user, setUser, t } = useAuth();
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 

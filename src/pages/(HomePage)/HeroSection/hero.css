@@ -40,19 +40,24 @@ header a {
     width: 100vw;
     overflow: hidden;
     position: relative;
+    aspect-ratio: 16 / 9;
+    max-height: 100vh;
 }
 
 .carousel .list .item {
     width: 100%;
     height: 100%;
     position: absolute;
-    inset: 0 0 0 0;
+    inset: 0;
+    min-height: 100%;
 }
 
 .carousel .list .item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    aspect-ratio: 16/9;
+    display: block;
 }
 
 .carousel .list .item .content {
@@ -112,7 +117,6 @@ header a {
     color: #eee;
 }
 
-/* thumbail */
 .thumbnail {
     position: absolute;
     bottom: 50px;
@@ -153,7 +157,6 @@ header a {
     font-weight: 300;
 }
 
-/* arrows */
 .arrows {
     position: absolute;
     top: 80%;
@@ -183,13 +186,11 @@ header a {
     color: #000;
 }
 
-/* animation */
 .carousel .list .item:nth-child(1) {
     z-index: 1;
 }
 
-/* animation text in first item */
-
+/* 
 .carousel .list .item:nth-child(1) .content .author,
 .carousel .list .item:nth-child(1) .content .title,
 .carousel .list .item:nth-child(1) .content .topic,
@@ -199,7 +200,14 @@ header a {
     filter: blur(20px);
     opacity: 0;
     animation: showContent .5s 1s linear 1 forwards;
+} */
+.carousel .list .item:nth-child(1) .content>* {
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    animation: none !important;
 }
+
 
 @keyframes showContent {
     to {
@@ -272,8 +280,6 @@ header a {
     }
 }
 
-/* running time */
-
 .carousel .time {
     position: absolute;
     z-index: 1000;
@@ -298,9 +304,6 @@ header a {
         width: 0
     }
 }
-
-
-/* prev click */
 
 .carousel.prev .list .item:nth-child(2) {
     z-index: 2;

@@ -24,3 +24,13 @@
   display: inline-block;
 }
 
+.splash-char {
+  opacity: 0; /* still lets it reserve space */
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

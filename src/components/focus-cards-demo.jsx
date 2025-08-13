@@ -5,31 +5,31 @@ export default function FocusCardsDemo() {
   const cards = [
      {
       title: "Pizza",
-      src: "https://images.unsplash.com/photo-1613564834361-9436948817d1?w=500&auto=format&fit=crop&q=60",
+      src: "/focus-pizza1.webp",
     },
     {
       title: "Burger",
-      src: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80",
+      src: "/focus-burger1.webp",
     },
     {
       title: "Sushi",
-      src: "https://images.unsplash.com/photo-1564489563601-c53cfc451e93?w=500&auto=format&fit=crop&q=60",
+      src: "/focus-sushi1.webp",
     },
     {
       title: "Pasta",
-      src: "https://plus.unsplash.com/premium_photo-1677000666741-17c3c57139a2?w=500&auto=format&fit=crop&q=60",
+      src: "/focus-pasta1.webp",
     },
     {
       title: "Salad",
-      src: "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=500&auto=format&fit=crop&q=60",
+      src: "/focus-salad1.webp",
     },
     {
       title: "Steak",
-      src: "https://images.unsplash.com/photo-1432139509613-5c4255815697?w=500&auto=format&fit=crop&q=60",
+      src: "/focus-steak1.webp",
     },
     {
       title: "Pancakes",
-      src: "./pancake.jpg",
+      src: "./pancake1.webp",
     },
   ];
 

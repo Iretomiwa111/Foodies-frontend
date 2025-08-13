@@ -9,11 +9,14 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUser = async () => {
+     const fetchUser = async () => {
+      console.log("Checking /user/me to verify if user is authenticated...");
       try {
         const res = await privateApiClient.get("/user/me");
+        console.log("/user/me success. User:", res.data.user);
         setUser(res.data.user);
-      } catch {
+      } catch (err) {
+        console.error("Failed to fetch /user/me:", err?.response?.data || err.message);
         setUser(null);
       } finally {
         setAuthLoading(false);

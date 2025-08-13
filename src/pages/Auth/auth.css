@@ -4,27 +4,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-/* html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden; 
-  background-color: #102a30; 
-} */
-
-/* body,
-input {
-  font-family: 'Lobster', cursive;
-} */
-
-/* .container {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  background-color: #102a30;
-  overflow: hidden;
-} */
 .container {
   position: relative;
   width: 100vw;
@@ -298,6 +277,15 @@ form.sign-up-form {
 .container.sign-up-mode form.sign-up-form {
   z-index: 2;
   opacity: 1;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 

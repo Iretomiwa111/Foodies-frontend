@@ -1,0 +1,133 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.forgot-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forgot-card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(60, 80, 180, 0.10);
+  padding: 3.5rem 0; /* Remove left/right padding */
+  max-width: 470px;
+  width: 100%;
+  min-height: 450px; 
+  text-align: center;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+.forgot-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3b82f6;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.forgot-desc {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.forgot-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+/* 
+.input-group {
+  width: 100%;
+  position: relative;
+} */
+
+.input-group {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.input-group input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #3b82f6;
+  border-radius: 5px;
+  background: transparent;
+  font-size: 1.08rem;
+  padding: 1.1rem 0 0.7rem 0;
+  transition: border-color 0.2s;
+  box-shadow: none;
+   margin: 0;
+     margin-left: -24px;
+  margin-right: -24px;
+}
+
+.input-group input:focus {
+  border-bottom: 2.5px solid #2563eb;
+  outline: none;
+  background: transparent;
+}
+.forgot-btn {
+  width: 55%;
+  padding: 0.7rem 1rem;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 100px;
+}
+
+.forgot-btn:disabled {
+  background: #a5b4fc;
+  cursor: not-allowed;
+}
+.back-arrow {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  cursor: pointer;
+  color: #3b82f6;
+  transition: color 0.2s;
+  z-index: 10;
+}
+
+.back-arrow:hover {
+  color: #2563eb;
+}
+
+
+@media (max-width: 600px) {
+  .forgot-bg {
+    padding: 1rem;
+  }
+  .forgot-card {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+    min-height: 320px;
+  }
+  .forgot-title {
+    font-size: 1.3rem;
+  }
+  .input-group input {
+    width: 100%;
+    max-width: 100%;
+  }
+}

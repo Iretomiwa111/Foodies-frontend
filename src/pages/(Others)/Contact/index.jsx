@@ -8,8 +8,6 @@ const Contact = () => {
   const handleSubmit = (e) => {
   e.preventDefault();
   toast.success("Message sent! We'll get back to you shortly.");
-  
-  // Optional: reset form
   e.target.reset();
 };
 

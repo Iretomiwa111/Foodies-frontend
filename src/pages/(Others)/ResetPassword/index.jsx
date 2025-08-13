@@ -1,78 +1,150 @@
-import React from "react";
+// import { useState } from "react";
+// import { useParams, useNavigate } from "react-router-dom";
+// import { apiClient } from "@/lib/client";
+// import { toast } from "sonner";
+
+// export default function ResetPassword() {
+//   const { token } = useParams();
+//   const navigate = useNavigate();
+//   const [password, setPassword] = useState("");
+//   const [confirmPassword, setConfirmPassword] = useState("");
+//   const [loading, setLoading] = useState(false);
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!password || !confirmPassword) return toast.error("Fill all fields");
+//     if (password !== confirmPassword) return toast.error("Passwords do not match");
+
+//     setLoading(true);
+//     try {
+//       await apiClient.post(`/auth/reset-password/${token}`, { password });
+//       toast.success("Password reset successful! Please login.");
+//       navigate("/auth");
+//     } catch (err) {
+//       toast.error(err.response?.data?.message || "Something went wrong");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="auth-page">
+//       <h2>Reset Password</h2>
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           type="password"
+//           placeholder="New password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//         />
+//         <input
+//           type="password"
+//           placeholder="Confirm new password"
+//           value={confirmPassword}
+//           onChange={(e) => setConfirmPassword(e.target.value)}
+//         />
+//         <button disabled={loading}>
+//           {loading ? "Resetting..." : "Reset Password"}
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }
+
+
+
+
+
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { apiClient } from "@/lib/client";
 import { toast } from "sonner";
+import { FaEye, FaEyeSlash, FaArrowLeft } from "react-icons/fa";
+import "./reset.css";
 
-const ResetPassword = () => {
+export default function ResetPassword() {
   const { token } = useParams();
   const navigate = useNavigate();
-
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPass, setShowPass] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
-  const handleReset = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!password || !confirmPassword) return toast.error("Fill all fields");
+    if (password !== confirmPassword) return toast.error("Passwords do not match");
 
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
-      return;
-    }
-
+    setLoading(true);
     try {
-      setLoading(true);
-      const res = await axios.post(
-        `http://localhost:5000/api/v1/reset-password/${token}`,
-        { password }
-      );
-      toast.success(res.data.message);
-      navigate("/login");
+      await apiClient.post(`/auth/reset-password/${token}`, { password });
+      toast.success("Password reset successful! Please login.");
+      navigate("/auth");
     } catch (err) {
-      toast.error(
-        err.response?.data?.message || "Failed to reset password"
-      );
+      toast.error(err.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <form
-        onSubmit={handleReset}
-        className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full space-y-4"
-      >
-        <h2 className="text-2xl text-black font-bold text-center">Reset Your Password</h2>
-
-        <input
-          type="password"
-          placeholder="New Password"
-          className="w-full px-4 py-2 border rounded text-black"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          
-        />
-        <input
-          type="password"
-          placeholder="Confirm New Password"
-          className="w-full px-4 py-2 border rounded text-black"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-
+    <div className="reset-bg">
+      <div className="reset-card">
         <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-black text-white py-2 rounded hover:opacity-90 transition"
+          className="back-arrow"
+          type="button"
+          onClick={() => navigate("/auth")}
+          aria-label="Back to Login"
         >
-          {loading ? "Resetting..." : "Reset Password"}
+          <FaArrowLeft size={22} />
         </button>
-      </form>
+        <h2 className="reset-title">Reset Password</h2>
+        <p className="reset-desc">
+          Create your new password and confirm it below.
+        </p>
+        <form className="reset-form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input
+              type={showPass ? "text" : "password"}
+              placeholder="New password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <span
+              className="show-hide"
+              onClick={() => setShowPass((v) => !v)}
+              tabIndex={0}
+              role="button"
+              aria-label={showPass ? "Hide password" : "Show password"}
+            >
+              {showPass ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
+          <div className="input-group">
+            <input
+              type={showConfirm ? "text" : "password"}
+              placeholder="Confirm new password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+            <span
+              className="show-hide"
+              onClick={() => setShowConfirm((v) => !v)}
+              tabIndex={0}
+              role="button"
+              aria-label={showConfirm ? "Hide password" : "Show password"}
+            >
+              {showConfirm ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
+          <button className="reset-btn" disabled={loading}>
+            {loading ? "Resetting..." : "Reset Password"}
+          </button>
+        </form>
+      </div>
     </div>
   );
-};
-
-export default ResetPassword;
+}

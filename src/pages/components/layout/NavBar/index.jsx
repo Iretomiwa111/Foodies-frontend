@@ -67,15 +67,27 @@ export default function NavBar({ onSearchChange, onSearchSubmit }) {
   const toggleDropdown = () => {
     setDropdownOpen((prev) => !prev);
   };
-  const handleLogout = async () => {
-    try {
-      await logout();
-      toast.success("Logged out");
-      navigate("/auth");
-    } catch {
-      toast.error("Logout failed");
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     await logout();
+  //     toast.success("Logged out");
+  //     navigate("/auth");
+  //   } catch {
+  //     toast.error("Logout failed");
+  //   }
+  // };
+const handleLogout = async () => {
+  try {
+    document.body.classList.add("fade-out");
+    await new Promise(resolve => setTimeout(resolve, 400)); // wait for animation
+    await logout();
+    toast.success("Logged out");
+    navigate("/auth");
+  } catch {
+    toast.error("Logout failed");
+  }
+};
+
 
   return (
     <>
