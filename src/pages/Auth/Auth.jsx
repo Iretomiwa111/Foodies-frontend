@@ -130,7 +130,7 @@ const Auth = () => {
               </div>
               {loginErrors.password && <p className="error text-red-600">{loginErrors.password.message}</p>}
 
-                <div style={{ width: "100%", display: "flex", justifyContent:"end", marginLeft:"-360px", marginTop: "6px" }}>
+                <div style={{ width: "100%", display: "flex", justifyContent:"end", marginTop: "6px" }}>
                 <Link to="/forgot-password" style={{ fontSize: "14px", color: "#3b82f6", textDecoration: "none" }}>
                   Forgot Password?
                 </Link>

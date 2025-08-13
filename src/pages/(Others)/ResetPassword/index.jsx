@@ -1,6 +1,6 @@
 // import { useState } from "react";
 // import { useParams, useNavigate } from "react-router-dom";
-// import { apiClient } from "@/lib/client";
+// import {  } from "@/lib/client";
 // import { toast } from "sonner";
 
 // export default function ResetPassword() {
