@@ -44,7 +44,7 @@ useEffect(() => {
       const cartRes = await privateApiClient.get("/cart");
       setCart(Array.isArray(cartRes.data) ? cartRes.data : []);
 
-      const userRes = await privateApiClient.get("/api/user/me"); 
+      const userRes = await privateApiClient.get("/user/me"); 
       console.log("API response for /me:", userRes.data);
 
       if (userRes.data?.user) {
