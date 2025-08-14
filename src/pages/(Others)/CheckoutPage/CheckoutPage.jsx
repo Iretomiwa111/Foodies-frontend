@@ -40,12 +40,13 @@ const CheckoutPage = () => {
 useEffect(() => {
   const fetchCartAndUser = async () => {
     try {
-      // Fetch cart
+
       const cartRes = await privateApiClient.get("/cart");
       setCart(Array.isArray(cartRes.data) ? cartRes.data : []);
 
-      // Fetch logged-in user's info
-      const userRes = await privateApiClient.get("/users/me");
+      const userRes = await privateApiClient.get("/api/users/me"); 
+      console.log("API response for /me:", userRes.data);
+
       if (userRes.data?.user) {
         const fullName = userRes.data.user.name || "";
         const [first, ...rest] = fullName.split(" ");
