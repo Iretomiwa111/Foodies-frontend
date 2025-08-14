@@ -37,34 +37,21 @@ const CheckoutPage = () => {
 
   const navigate = useNavigate();
 
-useEffect(() => {
-  const fetchCartAndUser = async () => {
-    try {
-      // Fetch cart
-      const cartRes = await privateApiClient.get("/cart");
-      setCart(Array.isArray(cartRes.data) ? cartRes.data : []);
-
-      // Fetch logged-in user's info
-      const userRes = await privateApiClient.get("/users/me");
-      if (userRes.data?.user) {
-        const fullName = userRes.data.user.name || "";
-        const [first, ...rest] = fullName.split(" ");
-        setFirstName(first || "");
-        setLastName(rest.join(" ") || "");
-        setEmail(userRes.data.user.email || "");
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const res = await privateApiClient.get("/cart");
+        setCart(Array.isArray(res.data) ? res.data : []);
+        setLoading(false);
+      } catch (err) {
+        console.error("Failed to fetch cart", err);
+        toast.error("Could not load cart");
+        setLoading(false);
       }
+    };
 
-      setLoading(false);
-    } catch (err) {
-      console.error("Failed to fetch cart/user", err);
-      toast.error("Could not load checkout data");
-      setLoading(false);
-    }
-  };
-
-  fetchCartAndUser();
-}, []);
-
+    fetchCart();
+  }, []);
 
 
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
